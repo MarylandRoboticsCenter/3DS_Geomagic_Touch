@@ -1,0 +1,35 @@
+version: "3.9"
+services:
+  foxy_touch_docker:
+    build:
+      context: ..
+      dockerfile: docker/3ds_touch_foxy.Dockerfile
+      target: foxy_touch_ws
+      args:
+        - WS_DIR=${WS_DIR}
+        - USERNAME=${USERNAME_DOCKER}
+    container_name: foxy_touch_container
+    environment:
+      - DISPLAY=$DISPLAY
+      - QT_X11_NO_MITSHM=1
+      # GPU access
+      - NVIDIA_DRIVER_CAPABILITIES=all
+      - NVIDIA_VISIBLE_DEVICES=all
+    runtime: nvidia
+    image: foxy_touch_image:latest
+    # Required for communicating over the network
+    network_mode: "host"
+    ipc: "host"
+    pid: "host"
+    # Required for accessing hardware
+    privileged: true
+    tty: true
+    stdin_open: true
+    devices:
+      - /dev/ttyACM0:/dev/ttyACM0
+    volumes:
+      - ../src:/home/${USERNAME_DOCKER}/${WS_DIR}/src
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      - /run/udev:/run/udev:ro
+
+

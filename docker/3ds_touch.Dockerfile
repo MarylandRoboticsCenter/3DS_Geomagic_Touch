@@ -107,7 +107,7 @@ RUN python3 -m pip install pyOpenHaptics && \
 ##############
 FROM touch_driver AS touch_loc_user
 
-ARG WS_DIR="dir_ws"
+ARG WS_DIR="docker_ws"
 ARG USERNAME=user
 ARG userid=1111
 ARG groupid=1111
@@ -138,7 +138,7 @@ RUN sudo mkdir -p -m 0700 /run/user/${userid} && \
 ADD --chown=${USERNAME}:${USERNAME} https://raw.githubusercontent.com/MarylandRoboticsCenter/ENAE450/main/misc/.tmux.conf $HOME/.tmux.conf
 
 # Create workspace folder
-RUN mkdir -p $HOME/${WS_DIR}/src
+RUN mkdir -p $HOME/${WS_DIR}/touch_py
 RUN curl https://files.pythonhosted.org/packages/9f/f6/4ca6cf37a55abd0b09c6d8a15fa3b60810ea8f5f6d25fe0ac7d8438f062b/pyopenhaptics-1.0.1.tar.gz --output ${WS_DIR}/pyopenhaptics-1.0.1.tar.gz && \
     cd ${WS_DIR} && tar zxf pyopenhaptics-1.0.1.tar.gz
 
