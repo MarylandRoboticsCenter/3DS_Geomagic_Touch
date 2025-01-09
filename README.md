@@ -1,10 +1,10 @@
 Docker image for working with 3D Systems (or Geomagic) Touch haptic device using ROS2 driver OR pyOpenHaptics Python wrapper. The image is based on Ubuntu 20.04. 
 
-* Build ROS2 foxy docker image, run the command from the `docker` folder
+* Build ROS2 foxy docker image (run the command from the `docker` folder):
     ```
     userid=$(id -u) groupid=$(id -g) docker compose -f foxy_dev-compose.yml build
     ```
-* Build 3D Systems Touch image that is based on the previous image:
+* Build 3D Systems Touch docker image that is based on the previous image:
     ```
     docker compose -f 3ds_touch_foxy-compose.yml build
     ```    
@@ -13,9 +13,9 @@ Docker image for working with 3D Systems (or Geomagic) Touch haptic device using
     ```
     docker compose -f 3ds_touch_foxy-compose.yml run --rm foxy_touch_docker
     ```
-* run `Touch_Setup` to initialize the device
-* to start ROS2 node, see README in the `src/Geomagic_Touch_ROS2` folder
-* to use python wrapper, see code examples in `~/touch_ws/pyopenhaptics-1.0.1/examples`
+* Run `Touch_Setup` to initialize the device
+* To start ROS2 node, see README in the `src/Geomagic_Touch_ROS2` folder
+* To use python wrapper, see code examples in `~/touch_ws/pyopenhaptics-1.0.1/examples`
 
 Used resources:
 1. https://github.com/2b-t/docker-for-robotics
