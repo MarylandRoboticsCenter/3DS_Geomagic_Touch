@@ -94,7 +94,7 @@ RUN sudo mkdir -p -m 0700 /run/user/${userid} && \
     sudo chown ${USERNAME}:${USERNAME} /run/user/${userid}
 
 # Setup tmux config
-ADD --chown=${USERNAME}:${USERNAME} https://raw.githubusercontent.com/MarylandRoboticsCenter/ENAE450/main/misc/.tmux.conf $HOME/.tmux.conf
+ADD --chown=${USERNAME}:${USERNAME} https://raw.githubusercontent.com/MarylandRoboticsCenter/someConfigs/refs/heads/master/.tmux_K.conf $HOME/.tmux.conf
 
 #####################
 # ROS2 workspace #
